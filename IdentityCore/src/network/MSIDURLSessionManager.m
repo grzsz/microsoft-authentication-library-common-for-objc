@@ -26,6 +26,13 @@
 
 static MSIDURLSessionManager *s_defaultManager = nil;
 static NSTimeInterval s_timeoutIntervalForResource = 0;
+static MSIDURLSessionProvider s_sessionProvider = nil;
+
+@interface MSIDURLSessionManager ()
+
+@property (nonatomic) BOOL ownsSession;
+
+@end
 
 @implementation MSIDURLSessionManager
 
@@ -38,25 +45,73 @@ static NSTimeInterval s_timeoutIntervalForResource = 0;
     {
         _configuration = configuration;
         _session = [NSURLSession sessionWithConfiguration:configuration delegate:delegate delegateQueue:delegateQueue];
+        _ownsSession = YES;
     }
-    
+
+    return self;
+}
+
+- (instancetype)initWithExternalSession:(NSURLSession *)session
+{
+    self = [super init];
+    if (self)
+    {
+        _session = session;
+        _configuration = session.configuration;
+        _ownsSession = NO;
+    }
+
     return self;
 }
 
 - (void)dealloc
 {
-    [_session invalidateAndCancel];
+    if (_ownsSession)
+    {
+        [_session invalidateAndCancel];
+    }
 }
 
 + (MSIDURLSessionManager *)defaultManager
 {
+    MSIDURLSessionProvider sessionProvider = self.sessionProvider;
+
+    if (sessionProvider)
+    {
+        NSURLSession *externalSession = sessionProvider();
+
+        if (externalSession)
+        {
+            MSID_LOG_WITH_CTX(MSIDLogLevelVerbose, nil, @"Using externally provided NSURLSession for network requests.");
+            return [[MSIDURLSessionManager alloc] initWithExternalSession:externalSession];
+        }
+
+        MSID_LOG_WITH_CTX(MSIDLogLevelWarning, nil, @"Session provider returned nil, falling back to the default NSURLSession.");
+    }
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
+
         s_defaultManager = [MSIDURLSessionManager instanceManager];
     });
-    
+
     return s_defaultManager;
+}
+
++ (MSIDURLSessionProvider)sessionProvider
+{
+    @synchronized (self)
+    {
+        return s_sessionProvider;
+    }
+}
+
++ (void)setSessionProvider:(MSIDURLSessionProvider)sessionProvider
+{
+    @synchronized (self)
+    {
+        s_sessionProvider = [sessionProvider copy];
+    }
 }
 
 + (MSIDURLSessionManager *)instanceManager
