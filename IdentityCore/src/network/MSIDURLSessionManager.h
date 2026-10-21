@@ -25,11 +25,29 @@
 
 @class MSIDURLSessionDelegate;
 
+/**
+ Returns the externally owned NSURLSession that should be used for the next request.
+ Called for every request, so implementations must be thread-safe and should return a long-lived session.
+ */
+typedef NSURLSession * _Nullable (^MSIDURLSessionProvider)(void);
+
 @interface MSIDURLSessionManager : NSObject
 
 - (instancetype _Nullable)initWithConfiguration:(nonnull NSURLSessionConfiguration *)configuration
                                        delegate:(nullable MSIDURLSessionDelegate *)delegate
                                   delegateQueue:(nullable NSOperationQueue *)delegateQueue NS_DESIGNATED_INITIALIZER;
+
+/**
+ Wraps a session owned by the host application. The session is never invalidated by this manager.
+ */
+- (instancetype _Nullable)initWithExternalSession:(nonnull NSURLSession *)session NS_DESIGNATED_INITIALIZER;
+
+/**
+ When set, `defaultManager` returns a manager wrapping the provided session for every request
+ instead of the library-owned session. `timeoutIntervalForResource` and `MSIDURLSessionDelegate`
+ do not apply to externally provided sessions. When the provider returns nil, the library-owned session is used.
+ */
+@property (nonatomic, copy, class, nullable) MSIDURLSessionProvider sessionProvider;
 
 @property (nonatomic, readonly, class, nonnull) MSIDURLSessionManager *defaultManager;
 @property (nonatomic, readonly, class, nonnull) MSIDURLSessionManager *instanceManager;

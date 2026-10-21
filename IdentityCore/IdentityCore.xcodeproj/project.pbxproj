@@ -2063,6 +2063,8 @@
 		B4CC96632F982FEA007F281A /* MSIDSessionCachePersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = B4CC96602F982FEA007F281A /* MSIDSessionCachePersistence.m */; };
 		B4DB467E2FB541B80038CC8C /* MSIDSessionCachePersistenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DB467D2FB541B80038CC8C /* MSIDSessionCachePersistenceTests.m */; };
 		B4DB46882FB543900038CC8C /* MSIDSessionCachePersistenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B4DB467D2FB541B80038CC8C /* MSIDSessionCachePersistenceTests.m */; };
+		7A1C5E5500000002000000C2 /* MSIDURLSessionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C5E5500000002000000C1 /* MSIDURLSessionManagerTests.m */; };
+		7A1C5E5500000002000000C3 /* MSIDURLSessionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C5E5500000002000000C1 /* MSIDURLSessionManagerTests.m */; };
 		B4E3BB9829AD911400A59B47 /* MSIDJITTroubleshootingResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E3BB9729AD90DB00A59B47 /* MSIDJITTroubleshootingResponse.h */; };
 		B4E3BB9A29AD91CC00A59B47 /* MSIDJITTroubleshootingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E3BB9929AD91CC00A59B47 /* MSIDJITTroubleshootingResponse.m */; };
 		B4E3BB9B29AD91CC00A59B47 /* MSIDJITTroubleshootingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E3BB9929AD91CC00A59B47 /* MSIDJITTroubleshootingResponse.m */; };
@@ -3755,6 +3757,7 @@
 		B4CC965F2F982FEA007F281A /* MSIDSessionCachePersistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSIDSessionCachePersistence.h; sourceTree = "<group>"; };
 		B4CC96602F982FEA007F281A /* MSIDSessionCachePersistence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSIDSessionCachePersistence.m; sourceTree = "<group>"; };
 		B4DB467D2FB541B80038CC8C /* MSIDSessionCachePersistenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSIDSessionCachePersistenceTests.m; sourceTree = "<group>"; };
+		7A1C5E5500000002000000C1 /* MSIDURLSessionManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSIDURLSessionManagerTests.m; sourceTree = "<group>"; };
 		B4E3BB9729AD90DB00A59B47 /* MSIDJITTroubleshootingResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSIDJITTroubleshootingResponse.h; sourceTree = "<group>"; };
 		B4E3BB9929AD91CC00A59B47 /* MSIDJITTroubleshootingResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSIDJITTroubleshootingResponse.m; sourceTree = "<group>"; };
 		B4E6D85F2A9F253B00FC7DD9 /* MSIDWebAuthNUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSIDWebAuthNUtil.h; sourceTree = "<group>"; };
@@ -6549,6 +6552,7 @@
 				B4DB467D2FB541B80038CC8C /* MSIDSessionCachePersistenceTests.m */,
 				B42558BA2F57AE340024523D /* MSIDOnboardingBlobBuilderTests.m */,
 				238AB2A820BF473F00CD8675 /* MSIDURLSessionDelegateTests.m */,
+				7A1C5E5500000002000000C1 /* MSIDURLSessionManagerTests.m */,
 				B20E3CB11FC4FA550029C097 /* MSIDVersion.m */,
 				968871E820AD0397009D6FC3 /* MSIDWebAADAuthResponseTests.m */,
 				23AE9DAA21409A2E00B285F3 /* MSIDWebMSAuthResponseTests.m */,
@@ -7904,6 +7908,7 @@
 				238EF086209161830035ABE6 /* MSIDAADJsonResponsePreprocessorTests.m in Sources */,
 				B20657C61FC9265800412B7D /* MSIDTelemetryExtensionsTests.m in Sources */,
 				B4DB46882FB543900038CC8C /* MSIDSessionCachePersistenceTests.m in Sources */,
+				7A1C5E5500000002000000C3 /* MSIDURLSessionManagerTests.m in Sources */,
 				B2BE924F21A24A5300F5AB8C /* MSIDSilentControllerIntegrationTests.m in Sources */,
 				74043F7D245CC84B00D3E7C1 /* MSIDCurrentRequestTelemetryTests.m in Sources */,
 				60747FFF23552ACF00C5308F /* MSIDBrokerOperationRemoveAccountRequestTests.m in Sources */,
@@ -8507,6 +8512,7 @@
 				B278937E2470CC6D00627C28 /* MSIDAssymetricKeychainGeneratorTests.m in Sources */,
 				238EF08420913D760035ABE6 /* MSIDAADRequestConfiguratorTests.m in Sources */,
 				B4DB467E2FB541B80038CC8C /* MSIDSessionCachePersistenceTests.m in Sources */,
+				7A1C5E5500000002000000C2 /* MSIDURLSessionManagerTests.m in Sources */,
 				B29F7806213DFA5600D61FC8 /* MSIDErrorTests.m in Sources */,
 				B217860F23A578BE00839CE8 /* MSIDBrokerOperationSignoutFromDeviceRequestTests.m in Sources */,
 				B431B52D2AF19E230020CD3D /* MSIDBrokerOperationGetPasskeyCredentialResponseTests.m in Sources */,
